@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e0f7fa;"> <!-- Color azul claro suave -->
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'inicio_centro_idiomas' %}">
+            <i class="fas fa-globe-americas me-2"></i>Sistema de Administración Centro de Idiomas
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'inicio_centro_idiomas' %}"><i class="fas fa-home me-1"></i>Inicio</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="idiomasDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-language me-1"></i>Idiomas
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="idiomasDropdown">
+                        <li><a class="dropdown-item" href="{% url 'agregar_idioma' %}">Agregar Idioma</a></li>
+                        <li><a class="dropdown-item" href="{% url 'ver_idiomas' %}">Ver Idiomas</a></li>
+                        <!-- Los enlaces de Actualizar y Borrar se harán desde la tabla de ver_idiomas -->
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="profesoresDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-chalkboard-teacher me-1"></i>Profesores
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="profesoresDropdown">
+                        <li><a class="dropdown-item" href="{% url 'agregar_profesor' %}">Agregar Profesor</a></li>
+                        <li><a class="dropdown-item" href="{% url 'ver_profesores' %}">Ver Profesores</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="clasesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-book-open me-1"></i>Clases
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="clasesDropdown">
+                        <li><a class="dropdown-item" href="#">Agregar Clases (Pendiente)</a></li>
+                        <li><a class="dropdown-item" href="#">Ver Clases (Pendiente)</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

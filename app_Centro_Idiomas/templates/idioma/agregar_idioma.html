@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Agregar Idioma{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card shadow-sm p-4" style="background-color: #e3f2fd;"> <!-- Fondo azul claro -->
+        <h2 class="card-title text-center mb-4" style="color: #1a237e;">Agregar Nuevo Idioma</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre del Idioma:</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" required>
+            </div>
+            <div class="mb-3">
+                <label for="nivel" class="form-label">Nivel:</label>
+                <input type="text" class="form-control" id="nivel" name="nivel" required>
+            </div>
+            <div class="mb-3">
+                <label for="region" class="form-label">Región:</label>
+                <input type="text" class="form-control" id="region" name="region">
+            </div>
+            <div class="mb-3">
+                <label for="descripcion" class="form-label">Descripción:</label>
+                <textarea class="form-control" id="descripcion" name="descripcion" rows="3"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="codigo" class="form-label">Código (ej. EN, ES, FR):</label>
+                <input type="text" class="form-control" id="codigo" name="codigo" required>
+            </div>
+            <!-- Para la imagen de la bandera, se necesita configurar MEDIA_ROOT y MEDIA_URL en settings.py -->
+            <!--
+            <div class="mb-3">
+                <label for="bandera_img" class="form-label">Bandera (Imagen):</label>
+                <input type="file" class="form-control" id="bandera_img" name="bandera_img" accept="image/*">
+            </div>
+            -->
+            <button type="submit" class="btn btn-primary" style="background-color: #26c6da; border-color: #26c6da;">Guardar Idioma</button>
+            <a href="{% url 'ver_idiomas' %}" class="btn btn-secondary ms-2">Cancelar</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

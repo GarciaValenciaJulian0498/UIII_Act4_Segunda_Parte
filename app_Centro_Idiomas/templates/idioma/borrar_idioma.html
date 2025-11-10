@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Borrar Idioma{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card shadow-sm p-4 bg-light">
+        <h2 class="card-title text-center mb-4" style="color: #d32f2f;">Confirmar Eliminación</h2>
+        <div class="alert alert-warning text-center" role="alert" style="background-color: #ffe0b2; color: #e65100; border-color: #ffcc80;">
+            <i class="fas fa-exclamation-triangle me-2"></i> ¿Estás seguro de que quieres eliminar el idioma "<strong>{{ idioma.nombre }}</strong>"?
+            Esta acción no se puede deshacer.
+        </div>
+        <dl class="row mb-4">
+            <dt class="col-sm-3">ID:</dt>
+            <dd class="col-sm-9">{{ idioma.id }}</dd>
+
+            <dt class="col-sm-3">Nombre:</dt>
+            <dd class="col-sm-9">{{ idioma.nombre }}</dd>
+
+            <dt class="col-sm-3">Nivel:</dt>
+            <dd class="col-sm-9">{{ idioma.nivel }}</dd>
+
+            <dt class="col-sm-3">Región:</dt>
+            <dd class="col-sm-9">{{ idioma.region|default:"N/A" }}</dd>
+
+            <dt class="col-sm-3">Código:</dt>
+            <dd class="col-sm-9">{{ idioma.codigo }}</dd>
+        </dl>
+
+        <form method="post" class="text-center">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger me-2" style="background-color: #ef5350; border-color: #ef5350;"><i class="fas fa-trash-alt me-1"></i> Sí, Eliminar</button>
+            <a href="{% url 'ver_idiomas' %}" class="btn btn-secondary"><i class="fas fa-times-circle me-1"></i> Cancelar</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

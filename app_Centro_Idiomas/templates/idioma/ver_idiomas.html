@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}Ver Idiomas{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card shadow-sm p-4" style="background-color: #e0f2f7;"> <!-- Fondo azul claro -->
+        <h2 class="card-title text-center mb-4" style="color: #006064;">Listado de Idiomas</h2>
+        <a href="{% url 'agregar_idioma' %}" class="btn btn-success mb-3" style="background-color: #4db6ac; border-color: #4db6ac;"><i class="fas fa-plus-circle me-1"></i> Agregar Nuevo Idioma</a>
+
+        {% if idiomas %}
+        <div class="table-responsive">
+            <table class="table table-hover table-striped">
+                <thead class="table-dark" style="background-color: #00796b;">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Nivel</th>
+                        <th scope="col">Región</th>
+                        <th scope="col">Descripción</th>
+                        <th scope="col">Código</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for idioma in idiomas %}
+                    <tr>
+                        <th scope="row">{{ idioma.id }}</th>
+                        <td>{{ idioma.nombre }}</td>
+                        <td>{{ idioma.nivel }}</td>
+                        <td>{{ idioma.region|default:"N/A" }}</td>
+                        <td>{{ idioma.descripcion|default:"Sin descripción" }}</td>
+                        <td>{{ idioma.codigo }}</td>
+                        <td>
+                            <a href="{% url 'actualizar_idioma' idioma.id %}" class="btn btn-sm btn-info me-1" style="background-color: #26c6da; border-color: #26c6da;"><i class="fas fa-edit"></i> Editar</a>
+                            <a href="{% url 'borrar_idioma' idioma.id %}" class="btn btn-sm btn-danger" style="background-color: #ff7043; border-color: #ff7043;"><i class="fas fa-trash-alt"></i> Borrar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="alert alert-info text-center" role="alert" style="background-color: #e0f2f7; color: #00796b; border-color: #b2ebf2;">
+            No hay idiomas registrados aún.
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

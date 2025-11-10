@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}Ver Profesores{% endblock %}
+
+{% block content %}
+<h2 class="mb-4 text-center">Nuestros Profesores</h2>
+<div class="text-end mb-3">
+    <a href="{% url 'agregar_profesor' %}" class="btn btn-primary">Agregar Nuevo Profesor</a>
+</div>
+
+{% if profesores %}
+<div class="table-responsive">
+    <table class="table table-hover table-striped">
+        <thead class="table-light">
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido Paterno</th>
+                <th>Apellido Materno</th>
+                <th>Teléfono</th>
+                <th>Correo</th>
+                <th>Idioma</th>
+                <th class="text-center">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for profesor in profesores %}
+            <tr>
+                <td>{{ profesor.nombre }}</td>
+                <td>{{ profesor.ap_paterno }}</td>
+                <td>{% if profesor.ap_materno %}{{ profesor.ap_materno }}{% else %}N/A{% endif %}</td>
+                <td>{% if profesor.telefono %}{{ profesor.telefono }}{% else %}N/A{% endif %}</td>
+                <td>{{ profesor.correo }}</td>
+                <td>{{ profesor.id_idioma.nombre }}</td>
+                <td class="text-center">
+                    <a href="{% url 'actualizar_profesor' profesor.pk %}" class="btn btn-warning btn-sm me-2">Editar</a>
+                    <a href="{% url 'borrar_profesor' profesor.pk %}" class="btn btn-danger btn-sm">Borrar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<div class="alert alert-info text-center" role="alert">
+    No hay profesores registrados aún. ¡Anímate a agregar uno!
+</div>
+{% endif %}
+{% endblock %}
